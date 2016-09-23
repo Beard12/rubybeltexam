@@ -1,0 +1,30 @@
+<h1>Hi <%= @user.name %></h1>
+<a href="/users">All Users</a> <a href="/logout">Logout</a>
+<p>Here is your profile description:</p>
+<textarea><%=@user.description %></textarea>
+
+<p>Your Professional Network</p>
+<div>
+	<% @user.networkees.each do |net|%>
+	<p><a href="/users/<%= net.id %>"><%= net.name %></a> <a href="/network/destroy/<%= net.id %>">Delete Friend</a></p>
+	<% end %>
+</div>
+
+<p>Invitations:</p>
+<p>The following people asked you to be in their network</p>
+<table>
+	<thead>
+		<tr>
+			<th> Name </th>
+			<th> Action </th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @invites.each do |inv| %>
+		<tr>
+			<td><a href="/users/<%= inv.user.id %>"><%= inv.user.name %></a></td>
+			<td><a href="/invite/accept/<%= inv.user.id %>">Accept Invite</a> <a href="/invite/destroy/<%= inv.user.id %>">Ignore</a></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

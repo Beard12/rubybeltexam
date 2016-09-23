@@ -1,0 +1,19 @@
+<a href="/professional_profile">My_Profile</a> <a href="/logout">Logout</a>
+
+<p>Users you may want to connect with: </p>
+<table>
+	<thead>
+		<tr>
+			<th> Name </th>
+			<th> Action </th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @nonconnect.each do |non| %>
+		<tr>
+			<td><a href="/users/<%= non.id %>"><%= non.name %></a></td>
+			<td><a href="/invite/send/<%= non.id %>">Connect</a></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

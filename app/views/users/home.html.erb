@@ -1,0 +1,31 @@
+<h1>Welcome!</h1>
+<fieldset>
+	<% if flash[:errors]%>
+	<% flash[:errors].each do |x|%>
+		<p><%= x %></p>
+	<% end %>
+	<% end %>
+	<legend>Register</legend>
+	<form action="/users/register" method="post">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	Name:<input type="text" name="user[name]"><br>
+	Email:<input type="email" name="user[email]"><br>
+	Password:<input type="password" name="user[password]"><br>
+	<p>*Password should be at least 8 characters</p>
+	Confirm PW:<input type="password" name="user[password_confirmation]"><br>
+	<textarea name="user[description]"></textarea>
+	<input type="submit" name="Register">
+	</form>
+</fieldset>
+<fieldset>
+	<% if flash[:logerror] %>
+	<%= flash[:logerror] %>
+	<% end %>
+	<legend>Login</legend>
+	<form action="/users/login" method="post">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	Email<input type="email" name="email">
+	Password<input type="password" name="password">
+	<input type="submit" name="Login">
+	</form>
+</fieldset>

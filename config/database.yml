@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: ubuntu
+  password:
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: belttest_development
+
+test:
+  <<: *default
+  database: belttest_test
+
+
+production:
+  <<: *default
+  database: belttest_production
